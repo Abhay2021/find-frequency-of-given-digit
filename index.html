@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find frequency</title>
+</head>
+<body>
+    <h3>Find frequency of a given digit under given limit(i.e. 0 to given limit)</h3>
+    Limit : <input type="number" value="35" id="limit">
+    <br><br>
+    digit : <input type="number" value="2" id="findnumber">
+    <br><br>
+    <button onclick="findFrequency()">Find Frequency</button>
+    <br><br>
+    <p id="result"></p>
+</body>
+</html>
+<script>
+function findFrequency(){
+    
+    var a = document.getElementById("limit").value;
+    var b = document.getElementById("findnumber").value;
+    //a:limit
+    //b:findfrequency
+    console.log("input",a,b);
+    var count_frequency = 0;
+    let y = '';
+    y +=b;
+    let b_length = y.length;
+    console.log("b_length",b_length);
+    for(let i=b-0;i<=a;i++){
+        let x = '';
+         x += i;
+        let i_length = x.length;
+        if(i==b){
+            count_frequency++;
+            
+        }else if(i_length>b_length){
+            
+            for(let j= 0;j<=(i_length-b_length);j++){
+                let new_number = '';
+                for(let k=j;k<j+b_length;k++){
+                    new_number += x[k];
+                }
+                //console.log("new_number",new_number);
+                if(new_number==b){
+                    count_frequency++;
+                }
+            }
+        }
+    }
+    let text = "Frequency of "+b+" from 0 to "+a+"  <b> : "+ count_frequency+"</b>";
+    document.getElementById("result").innerHTML = text;
+    
+}
+
+</script>
